@@ -114,7 +114,8 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                     }
                     else if (strtolower($event['message']['text']) == 'user id') {
                         // Fitur Untuk Mendapatkan userId
-                        $result = $bot->replyText($event['replyToken'], $event['source']['userId']);
+                        // $result = $bot->replyText($event['replyToken'], $event['source']['userId']);
+                        $result = $bot->replyText($event['replyToken'], $event['source']['pictureUrl']);
  
                     } 
                     else if (strtolower($event['message']['text']) == 'flex message') {
