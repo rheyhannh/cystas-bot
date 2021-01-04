@@ -128,13 +128,13 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
                     }
-                    else if(strtolower($event['message']['text']) == '!perintah'){
+                    else if(strtolower($event['message']['text']) == '!info'){
                         // Info Bot
-                        $textMessageBuilder1 = new TextMessageBuilder("Berikut ini adalah perintah beserta fungsinya yang dapat aku mengerti : " . PHP_EOL . PHP_EOL . "!info : Menampilkan Info Bot" . PHP_EOL . "!perintah : Menampilkan Perintah" . PHP_EOL . "!md5_Teks : Fitur Enkripsi MD5" . PHP_EOL . "!sha1_Teks : Fitur Enkripsi SHA1" . PHP_EOL . "!ripemd128_Teks : Fitur Enkripsi RIPEMD128" . PHP_EOL . "!gost_Teks : Fitur Enkripsi GOST" . PHP_EOL . "!fnv132_Teks : Fitur Enkripsi FNV132" . PHP_EOL . "!contoh : Menampilkan Contoh Detail" . PHP_EOL . "!card : Love From Cystas Bot" . PHP_EOL . PHP_EOL . "Perlu diingat perintah dimasukkan dengan huruf kecil ya !. Semoga kamu terbantu dengan adanya aku."); // pesan 1
-                        $stickerMessageBuilder = new StickerMessageBuilder(1, 106); // pesan sticker
+                        $stickerMessageBuilder = new StickerMessageBuilder(2, 34); // pesan sticker
+                        $textMessageBuilder1 = new TextMessageBuilder("Halo ! Perkenalkan, aku Cystas. Aku adalah Bot yang berfungsi untuk melakukan Enkripsi pada suatu Teks. Enkripsi yang aku lakukan adalah dengan Hashing. Ada beberapa teknik Hashing yang aku gunakan antara lain MD5, SHA1, GOST dan lainnya." . PHP_EOL . PHP_EOL . "Kamu dapat langsung menggunakan fitur yang aku sediakan pada '!perintah'. Semoga aku dapat membantu kamu hihihi."); // pesan 1
                         $multiMessageBuilder = new MultiMessageBuilder();
-                        $multiMessageBuilder->add($textMessageBuilder1);
                         $multiMessageBuilder->add($stickerMessageBuilder);
+                        $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
                     }               
                     else if(strtolower($event['message']['text']) == '!card') {
@@ -166,22 +166,6 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         ->withHeader('Content-Type', 'application/json')
                         ->withStatus($result->getHTTPStatus());
                 }
-                // API untuk Content Upload
-                elseif (
-                    $event['message']['type'] == 'image' or
-                    $event['message']['type'] == 'video' or
-                    $event['message']['type'] == 'audio' or
-                    $event['message']['type'] == 'file'
-                ) {
-                    $contentURL = " https://cystas-bot.herokuapp.com/public/content/" . $event['message']['id'];
-                    $contentType = ucfirst($event['message']['type']);
-                    $result = $bot->replyText($event['replyToken'],
-                        $contentType . " yang Anda kirim bisa diakses dari link:\n " . $contentURL);
-                    $response->getBody()->write(json_encode($result->getJSONDecodedBody()));
-                    return $response
-                        ->withHeader('Content-Type', 'application/json')
-                        ->withStatus($result->getHTTPStatus());
-                } 
                 // API untuk Chat Group atau Room
                 elseif (
                     $event['source']['type'] == 'group' or
@@ -213,62 +197,6 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
         return $response->withStatus(200, 'for Webhook!'); // Memberikan response 200 ke pas verify Webhook
     }
     return $response->withStatus(400, 'No event sent!');
-});
-
-$app->get('/pushmessage', function ($req, $response) use ($bot) {
-    // Mengirim pesan push ke User
-    $userId = 'Ue39d0d7eba0ebf6b4115da5f0b2b1ed6';
-    // Inisialisasi Objek untuk Pesan atau Sticker
-    $textMessageBuilder = new TextMessageBuilder('Halo, ini pesan push');
-    $stickerMessageBuilder = new StickerMessageBuilder(1, 106);
-    $multiMessageBuilder = new MultiMessageBuilder();
-    $multiMessageBuilder->add($textMessageBuilder);
-    $multiMessageBuilder->add($stickerMessageBuilder);
-    $result = $bot->pushMessage($userId, $multiMessageBuilder);
- 
-    $response->getBody()->write("Pesan push berhasil dikirim!");
-    return $response
-        ->withHeader('Content-Type', 'application/json')
-        ->withStatus($result->getHTTPStatus());
-});
-
-$app->get('/multicast', function($req, $response) use ($bot)
-{
-    // List Users
-    $userList = [
-        'Ue39d0d7eba0ebf6b4115da5f0b2b1ed6'];
- 
-    // Mengirimkan pesan multicas ke user yang didaftarkan
-    $textMessageBuilder = new TextMessageBuilder('Halo, ini pesan multicast');
-    $result = $bot->multicast($userList, $textMessageBuilder);
- 
-    $response->getBody()->write("Pesan multicast berhasil dikirim");
-    return $response
-        ->withHeader('Content-Type', 'application/json')
-        ->withStatus($result->getHTTPStatus());
-});
-
-$app->get('/profile', function ($req, $response) use ($bot)
-{
-    // Mendapatkan Profile User
-    $userId = 'Ue39d0d7eba0ebf6b4115da5f0b2b1ed6';
-    $result = $bot->getProfile($userId);
- 
-    $response->getBody()->write(json_encode($result->getJSONDecodedBody()));
-    return $response
-        ->withHeader('Content-Type', 'application/json')
-        ->withStatus($result->getHTTPStatus());
-});
-
-$app->get('/content/{messageId}', function ($req, $response, $args) use ($bot) {
-    // Mendapatkan Konten Pesan
-    $messageId = $args['messageId'];
-    $result = $bot->getMessageContent($messageId);
-    // Set response
-    $response->getBody()->write($result->getRawBody());
-    return $response
-        ->withHeader('Content-Type', $result->getHeader('Content-Type'))
-        ->withStatus($result->getHTTPStatus());
 });
 
 $app->run();
