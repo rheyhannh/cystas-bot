@@ -147,7 +147,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                     }
                     else{
                         // Fitur yang Tidak Ada
-                        $textMessageBuilder1 = new TextMessageBuilder("Aduh maaf aku belum bisa mengerti perintah yang kamu kirimkan" . "'" . $event['message']['text'] . "'." . " Tapi kamu bisa mengetik '!perintah' untuk melihat perintah yang aku mengerti."); // pesan 1
+                        $textMessageBuilder1 = new TextMessageBuilder("Aduh maaf aku belum bisa mengerti perintah yang kamu kirimkan " . "'" . $event['message']['text'] . "'." . " Tapi kamu bisa mengetik '!perintah' untuk melihat perintah yang aku mengerti."); // pesan 1
                         $stickerMessageBuilder = new StickerMessageBuilder(1, 10); // pesan sticker
     
                         $multiMessageBuilder = new MultiMessageBuilder();
