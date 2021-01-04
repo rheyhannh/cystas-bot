@@ -1,74 +1,153 @@
 {
-    "type": "bubble",
-    "header": {
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-        {
-          "type": "text",
-          "text": "Dicoding Academy",
-          "weight": "bold"
-        }
-      ]
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://i.imgur.com/0l4JtEI.jpg",
+    "size": "full",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "http://linecorp.com/"
     },
-    "hero": {
-      "type": "image",
-      "url": "https://www.dicoding.com/images/small/academy/menjadi_android_developer_expert_logo_041217105708.png",
-      "size": "full",
-      "aspectRatio": "4:3",
-      "aspectMode": "cover"
-    },
-    "body": {
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-        {
-          "type": "text",
-          "text": "Menjadi Android Developer Expert",
-          "size": "sm",
-          "color": "#c9302c",
-          "weight": "bold"
-        },
-        {
-          "type": "text",
-          "text": "oleh: Dicoding Indonesia",
-          "size": "sm",
-          "color": "#c9302c"
-        },
-        {
-          "type": "text",
-          "text": "Jadilah expert di dunia pemrograman Android. Materi disusun oleh Dicoding sebagai Google Authorized Training Partner.",
-          "size": "sm",
-          "wrap": true,
-          "margin": "lg"
-        }
-      ]
-    },
-    "footer": {
-      "type": "box",
-      "layout": "horizontal",
-      "spacing": "sm",
-      "contents": [
-        {
-          "type": "button",
-          "style": "secondary",
-          "action": {
-            "type": "postback",
-            "label": "Trial",
-            "displayText": "Trial",
-            "data": "Trial"
+    "aspectRatio": "20:13"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Halo! Perkenalkan,",
+        "weight": "bold",
+        "size": "md",
+        "align": "center",
+        "color": "#484848"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "margin": "md",
+        "contents": []
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "lg",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Nama",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "Reyhan Naufal Hayyan",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 3
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Prodi",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "Teknik Komputer",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 3
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Kerjaan",
+                "flex": 1,
+                "size": "sm",
+                "color": "#aaaaaa"
+              },
+              {
+                "type": "text",
+                "text": "Membuat Bot Cystas",
+                "flex": 3,
+                "size": "sm",
+                "color": "#666666"
+              }
+            ],
+            "spacing": "sm"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Pesan",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "Terimakasih telah menggunakan Bot Cystas. Untuk mengenal saya lebih jauh, dapat mengakses website dibawah ini.",
+                "flex": 3,
+                "size": "sm",
+                "color": "#666666",
+                "wrap": true,
+                "margin": "none"
+              }
+            ],
+            "spacing": "sm"
           }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "primary",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "Website",
+          "uri": "http://whoishayyan.my.id/"
         },
-        {
-          "type": "button",
-          "style": "primary",
-          "action": {
-            "type": "postback",
-            "label": "Daftar",
-            "displayText": "Daftar",
-            "data": "Daftar"
-          }
-        }
-      ]
-    }
+        "color": "#808080"
+      },
+      {
+        "type": "spacer",
+        "size": "xs"
+      }
+    ],
+    "flex": 0
   }
+}
