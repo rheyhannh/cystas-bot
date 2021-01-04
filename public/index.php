@@ -87,7 +87,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         $kataripemd128 = $event['message']['text'];
                         $pisahripemd128 = substr($kataripemd128, strpos($kataripemd128, "_") + 1);
                         $fixripemd128 = hash('ripemd128', $pisahripemd128);
-                        $textMessageBuilder1 = new TextMessageBuilder('[RIPEDMD128 Encryptor]' . PHP_EOL . "String : {$pisahripedmd128}" . PHP_EOL . "RIPEDMD128 : {$fixripedmd128}"); // pesan hasil
+                        $textMessageBuilder1 = new TextMessageBuilder('[RIPEDMD128 Encryptor]' . PHP_EOL . "String : {$pisahripemd128}" . PHP_EOL . "RIPEMD128 : {$fixripemd128}"); // pesan hasil
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
