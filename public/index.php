@@ -67,7 +67,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         $katamd5 = $event['message']['text'];
                         $pisahmd5 = substr($katamd5, strpos($katamd5, "_") + 1);
                         $fixmd5 = md5($pisahmd5);
-                        $textMessageBuilder1 = new TextMessageBuilder('[MD5 Encryptor]' . PHP_EOL . "Teks : {$pisahmd5}" . PHP_EOL . "Hasil : {$fixmd5}"); // pesan hasil
+                        $textMessageBuilder1 = new TextMessageBuilder('[MD5 Encryptor]' . PHP_EOL . "Teks --> {$pisahmd5}" . PHP_EOL . "Hasil --> {$fixmd5}"); // pesan hasil
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
