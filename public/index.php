@@ -124,12 +124,9 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                     }
                     else if(strtolower($event['message']['text']) == '!contoh'){
                         // Contoh Fitur
-                        $textMessageBuilder1 = new TextMessageBuilder('Tungguin yaa masih proses :p #fitur2'); // pesan 1
-                        $stickerMessageBuilder = new StickerMessageBuilder(1, 2); // pesan sticker
-
+                        $textMessageBuilder1 = new TextMessageBuilder("Kamu tinggal memilih Enkripsi yang ingin digunakan. Misalnya, kamu ingin menggunakan Enkripsi MD5. Kamu bisa menggunakan perintah !md5_Teks dimana Teks dapat diganti dengan Kata atau Kalimat yang ingin diEnkripsi." . PHP_EOL . PHP_EOL . "Contoh : !md5_Enkripsi Aku"); // pesan 1
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
-                        $multiMessageBuilder->add($stickerMessageBuilder);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
                     }                
                     else if (strtolower($event['message']['text']) == 'flex message') {
@@ -147,9 +144,8 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                     }
                     else{
                         // Fitur yang Tidak Ada
-                        $textMessageBuilder1 = new TextMessageBuilder("Aduh maaf aku belum bisa mengerti perintah yang kamu kirimkan " . "'" . $event['message']['text'] . "'." . PHP_EOL . PHP_EOL . " Tapi kamu bisa mengetik '!perintah' untuk melihat perintah yang aku mengerti."); // pesan 1
+                        $textMessageBuilder1 = new TextMessageBuilder("Aduh maaf aku belum bisa mengerti perintah yang kamu kirimkan " . "'" . $event['message']['text'] . "'." . PHP_EOL . PHP_EOL . "Tapi kamu bisa mengetik '!perintah' untuk melihat perintah yang aku mengerti."); // pesan 1
                         $stickerMessageBuilder = new StickerMessageBuilder(1, 10); // pesan sticker
-    
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $multiMessageBuilder->add($stickerMessageBuilder);
