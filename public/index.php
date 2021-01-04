@@ -67,7 +67,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         $katamd5 = $event['message']['text'];
                         $pisahmd5 = substr($katamd5, strpos($katamd5, "_") + 1);
                         $fixmd5 = md5($pisahmd5);
-                        $textMessageBuilder1 = new TextMessageBuilder('[MD5 Encryptor]' . PHP_EOL . "String :{$pisahmd5}" . PHP_EOL . "MD5 :{$fixmd5}"); // pesan hasil
+                        $textMessageBuilder1 = new TextMessageBuilder('[MD5 Encryptor]' . PHP_EOL . "String : {$pisahmd5}" . PHP_EOL . "MD5 : {$fixmd5}"); // pesan hasil
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
@@ -77,7 +77,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         $katasha1 = $event['message']['text'];
                         $pisahsha1 = substr($katasha1, strpos($katasha1, "_") + 1);
                         $fixsha1 = sha1($pisahsha1);
-                        $textMessageBuilder1 = new TextMessageBuilder($pisahsha1 . ' (String) : ' . $fixsha1 . ' (sha1)'); // pesan hasil
+                        $textMessageBuilder1 = new TextMessageBuilder('[SHA1 Encryptor]' . PHP_EOL . "String : {$pisahsha1}" . PHP_EOL . "SHA1 : {$fixsha1}"); // pesan hasil
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
@@ -87,7 +87,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         $kataripemd128 = $event['message']['text'];
                         $pisahripemd128 = substr($kataripemd128, strpos($kataripemd128, "_") + 1);
                         $fixripemd128 = hash('ripemd128', $pisahripemd128);
-                        $textMessageBuilder1 = new TextMessageBuilder($pisahripemd128 . ' (String) : ' . $fixripemd128 . ' (ripedm128)'); // pesan hasil
+                        $textMessageBuilder1 = new TextMessageBuilder('[RIPEDMD128 Encryptor]' . PHP_EOL . "String : {$pisahripedmd128}" . PHP_EOL . "RIPEDMD128 : {$fixripedmd128}"); // pesan hasil
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
@@ -97,7 +97,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         $katagost = $event['message']['text'];
                         $pisahgost = substr($katagost, strpos($katagost, "_") + 1);
                         $fixgost = hash('gost', $pisahgost);
-                        $textMessageBuilder1 = new TextMessageBuilder($pisahgost . ' (String) : ' . $fixgost . ' (gost)'); // pesan hasil
+                        $textMessageBuilder1 = new TextMessageBuilder('[GOST Encryptor]' . PHP_EOL . "String : {$pisahgost}" . PHP_EOL . "GOST : {$fixgost}"); // pesan hasil
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
@@ -107,7 +107,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         $katafnv132 = $event['message']['text'];
                         $pisahfnv132 = substr($katafnv132, strpos($katafnv132, "_") + 1);
                         $fixfnv132 = hash('fnv132', $pisahfnv132);
-                        $textMessageBuilder1 = new TextMessageBuilder($pisahfnv132 . ' (String) : ' . $fixfnv132 . ' (fnv132)'); // pesan hasil
+                        $textMessageBuilder1 = new TextMessageBuilder('[FNV132 Encryptor]' . PHP_EOL . "String : {$pisahfnv132}" . PHP_EOL . "FNV132 : {$fixfnv132}"); // pesan hasil
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
