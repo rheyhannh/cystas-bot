@@ -63,17 +63,55 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                 if($event['message']['type'] == 'text')
                 {
                     if (strstr($event['message']['text'], '!md5')){
-                        // Fitur 1
+                        // Fitur Enkripsi md5
                         $katamd5 = $event['message']['text'];
                         $pisahmd5 = substr($katamd5, strpos($katamd5, "_") + 1);
                         $fixmd5 = md5($pisahmd5);
-                        $result = $bot->replyText($event['replyToken'], $fixmd5);
+                        $textMessageBuilder1 = new TextMessageBuilder(' (String) : ' . $fixmd5 . ' (md5)'); // pesan hasil
+                        $multiMessageBuilder = new MultiMessageBuilder();
+                        $multiMessageBuilder->add($textMessageBuilder1);
+                        $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
                     }
-                    else if (strtolower($event['message']['text']) == 'user id') {
-                        // Fitur Untuk Mendapatkan userId
-                        $result = $bot->replyText($event['replyToken'], $event['source']['userId']);
- 
-                    } 
+                    else if (strstr($event['message']['text'], '!sha1')){
+                        // Fitur Enkripsi sha1
+                        $katasha1 = $event['message']['text'];
+                        $pisahsha1 = substr($katasha1, strpos($katasha1, "_") + 1);
+                        $fixsha1 = sha1($pisahsha1);
+                        $textMessageBuilder1 = new TextMessageBuilder(' (String) : ' . $fixsha1 . ' (sha1)'); // pesan hasil
+                        $multiMessageBuilder = new MultiMessageBuilder();
+                        $multiMessageBuilder->add($textMessageBuilder1);
+                        $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
+                    }
+                    else if (strstr($event['message']['text'], '!ripemd128')){
+                        // Fitur Enkripsi ripemd128
+                        $kataripemd128 = $event['message']['text'];
+                        $pisahripemd128 = substr($kataripemd128, strpos($kataripemd128, "_") + 1);
+                        $fixripemd128 = hash('ripemd128', $pisahripemd128);
+                        $textMessageBuilder1 = new TextMessageBuilder(' (String) : ' . $fixripemd128 . ' (ripedm128)'); // pesan hasil
+                        $multiMessageBuilder = new MultiMessageBuilder();
+                        $multiMessageBuilder->add($textMessageBuilder1);
+                        $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
+                    }
+                    else if (strstr($event['message']['text'], '!gost')){
+                        // Fitur Enkripsi gost
+                        $katagost = $event['message']['text'];
+                        $pisahgost = substr($katagost, strpos($katagost, "_") + 1);
+                        $fixgost = hash('gost', $pisahgost);
+                        $textMessageBuilder1 = new TextMessageBuilder(' (String) : ' . $fixgost . ' (gost)'); // pesan hasil
+                        $multiMessageBuilder = new MultiMessageBuilder();
+                        $multiMessageBuilder->add($textMessageBuilder1);
+                        $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
+                    }
+                    else if (strstr($event['message']['text'], '!fnv132')){
+                        // Fitur Enkripsi fnv132
+                        $katafnv132 = $event['message']['text'];
+                        $pisahfnv132 = substr($katafnv132, strpos($katafnv132, "_") + 1);
+                        $fixfnv132 = hash('fnv132', $pisahfnv132);
+                        $textMessageBuilder1 = new TextMessageBuilder(' (String) : ' . $fixfnv132 . ' (fnv132)'); // pesan hasil
+                        $multiMessageBuilder = new MultiMessageBuilder();
+                        $multiMessageBuilder->add($textMessageBuilder1);
+                        $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
+                    }                 
                     else if (strtolower($event['message']['text']) == 'flex message') {
                         $flexTemplate = file_get_contents("../flex_message.json"); // template flex message
                         $result = $httpClient->post(LINEBot::DEFAULT_ENDPOINT_BASE . '/v2/bot/message/reply', [
