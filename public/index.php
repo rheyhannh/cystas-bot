@@ -124,7 +124,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                     }
                     else if(strtolower($event['message']['text']) == '!contoh'){
                         // Contoh Fitur
-                        $textMessageBuilder1 = new TextMessageBuilder("Kamu tinggal memilih Enkripsi yang ingin digunakan. Misalnya, kamu ingin menggunakan Enkripsi MD5. Kamu bisa menggunakan perintah !md5_Teks dimana Teks dapat diganti dengan Kata atau Kalimat yang ingin diEnkripsi." . PHP_EOL . PHP_EOL . "Contoh : !md5_Enkripsi Aku"); // pesan 1
+                        $textMessageBuilder1 = new TextMessageBuilder("Kamu tinggal memilih Enkripsi yang ingin digunakan. Misalnya, kamu ingin menggunakan Enkripsi MD5. Kamu bisa menggunakan perintah !md5_Teks dimana Teks dapat diganti dengan Kata atau Kalimat yang ingin diEnkripsi. Pastikan kamu memasukkan perintah terlebih dahulu dan diikuti Kata atau Kalimat yang ingin diEnkripsi setelah simbol garis bawah ya!." . PHP_EOL . PHP_EOL . "Contoh : !md5_Enkripsi Aku"); // pesan 1
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
