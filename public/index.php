@@ -114,7 +114,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                     }  
                     else if(strtolower($event['message']['text']) == '!perintah'){
                         // Penjelasan Perintah
-                        $textMessageBuilder1 = new TextMessageBuilder("Berikut ini adalah perintah beserta fungsinya yang dapat aku mengerti : " . PHP_EOL . PHP_EOL . "!info : Menampilkan Info Bot" . PHP_EOL . "!perintah : Menampilkan Perintah" . PHP_EOL . "!md5_Teks : Fitur Enkripsi MD5" . PHP_EOL . "!sha1_Teks : Fitur Enkripsi SHA1" . PHP_EOL . "!ripemd128_Teks : Fitur Enkripsi RIPEMD128" . PHP_EOL . "!gost_Teks : Fitur Enkripsi GOST" . PHP_EOL . "!fnv132_Teks : Fitur Enkripsi FNV132" . PHP_EOL . "!contoh : Menampilkan Contoh Detail" . PHP_EOL . "!card : Love From Cystas Bot" . PHP_EOL . PHP_EOL . "Semoga kamu terbantu ya dengan adanya Bot ini"); // pesan 1
+                        $textMessageBuilder1 = new TextMessageBuilder("Berikut ini adalah perintah beserta fungsinya yang dapat aku mengerti : " . PHP_EOL . PHP_EOL . "!info : Menampilkan Info Bot" . PHP_EOL . "!perintah : Menampilkan Perintah" . PHP_EOL . "!md5_Teks : Fitur Enkripsi MD5" . PHP_EOL . "!sha1_Teks : Fitur Enkripsi SHA1" . PHP_EOL . "!ripemd128_Teks : Fitur Enkripsi RIPEMD128" . PHP_EOL . "!gost_Teks : Fitur Enkripsi GOST" . PHP_EOL . "!fnv132_Teks : Fitur Enkripsi FNV132" . PHP_EOL . "!contoh : Menampilkan Contoh Detail" . PHP_EOL . "!card : Love From Cystas Bot" . PHP_EOL . PHP_EOL . "Perlu diingat perintah dimasukkan dengan huruf kecil ya!. Semoga kamu terbantu dengan adanya aku"); // pesan 1
                         $stickerMessageBuilder = new StickerMessageBuilder(1, 106); // pesan sticker
 
                         $multiMessageBuilder = new MultiMessageBuilder();
@@ -124,12 +124,12 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                     }
                     else if(strtolower($event['message']['text']) == '!contoh'){
                         // Contoh Fitur
-                        $textMessageBuilder1 = new TextMessageBuilder("Pertama, kamu perlu memilih Enkripsi yang ingin digunakan. Misalnya, kamu ingin menggunakan Enkripsi MD5. Kamu bisa menggunakan perintah !md5_Teks dimana Teks dapat diganti dengan Kata atau Kalimat yang ingin diEnkripsi. Pastikan kamu memasukkan perintah terlebih dahulu dan diikuti Kata atau Kalimat yang ingin diEnkripsi setelah simbol garis bawah ya !" . PHP_EOL . PHP_EOL . "Contoh : !md5_Enkripsi Aku"); // pesan 1
+                        $textMessageBuilder1 = new TextMessageBuilder("Kamu hanya perlu memilih Enkripsi yang ingin digunakan dan memasukkan Kata atau Kalimat yang ingin diEnkripsi. Misalnya, kamu ingin menggunakan Enkripsi MD5. Kamu bisa menggunakan perintah !md5_Teks dimana Teks dapat diganti dengan Kata atau Kalimat yang ingin diEnkripsi. Pastikan kamu memasukkan perintah terlebih dahulu dan diikuti Kata atau Kalimat yang ingin diEnkripsi setelah simbol garis bawah ya !" . PHP_EOL . PHP_EOL . "Contoh : !md5_Enkripsi Aku"); // pesan 1
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
                     }                
-                    else if (strtolower($event['message']['text']) == 'flex message') {
+                    else if (strtolower($event['message']['text']) == '!card') {
                         $flexTemplate = file_get_contents("../flex_message.json"); // template flex message
                         $result = $httpClient->post(LINEBot::DEFAULT_ENDPOINT_BASE . '/v2/bot/message/reply', [
                             'replyToken' => $event['replyToken'],
