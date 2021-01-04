@@ -62,7 +62,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
             {
                 if($event['message']['type'] == 'text')
                 {
-                    if (strpos($event['message']['text'], '!md5') !== false) {
+                    if (strstr($event['message']['text'], '!md5')){
                         // Fitur 1
                         $katamd5 = $event['message']['text'];
                         $pisahmd5 = substr($katamd5, strpos($katamd5, "_") + 1);
