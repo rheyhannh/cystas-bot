@@ -39,7 +39,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
     // get request body dan line signature header
     $body = $request->getBody();
     $signature = $request->getHeaderLine('HTTP_X_LINE_SIGNATURE');
-  
+  md5()
     // log body and signature
     file_put_contents('php://stderr', 'Body: ' . $body);
   
@@ -62,60 +62,16 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
             {
                 if($event['message']['type'] == 'text')
                 {
-                    if($event['message']['text'] == 'yansFitur1'){
+                    if (strpos($event['message']['text'], '!md5') !== false) {
                         // Fitur 1
-                        $textMessageBuilder1 = new TextMessageBuilder('Tungguin yaa masih proses :p #fitur1'); // pesan 1
-                        $stickerMessageBuilder = new StickerMessageBuilder(1, 2); // pesan sticker
-
-                        $multiMessageBuilder = new MultiMessageBuilder();
-                        $multiMessageBuilder->add($textMessageBuilder1);
-                        $multiMessageBuilder->add($stickerMessageBuilder);
-                        $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
-                    }
-                    else if($event['message']['text'] == 'yansFitur2'){
-                        // Fitur 2
-                        $textMessageBuilder1 = new TextMessageBuilder('Tungguin yaa masih proses :p #fitur2'); // pesan 1
-                        $stickerMessageBuilder = new StickerMessageBuilder(1, 2); // pesan sticker
-
-                        $multiMessageBuilder = new MultiMessageBuilder();
-                        $multiMessageBuilder->add($textMessageBuilder1);
-                        $multiMessageBuilder->add($stickerMessageBuilder);
-                        $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
-                    }
-                    else if($event['message']['text'] == 'yansFitur3'){
-                        // Fitur 3
-                        $textMessageBuilder1 = new TextMessageBuilder('Tungguin yaa masih proses :p #fitur3'); // pesan 1
-                        $stickerMessageBuilder = new StickerMessageBuilder(1, 2); // pesan sticker
-
-                        $multiMessageBuilder = new MultiMessageBuilder();
-                        $multiMessageBuilder->add($textMessageBuilder1);
-                        $multiMessageBuilder->add($stickerMessageBuilder);
-                        $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
-                    }
-                    else if($event['message']['text'] == 'yansFitur4'){
-                        // Fitur 4
-                        $textMessageBuilder1 = new TextMessageBuilder('Tungguin yaa masih proses :p #fitur4'); // pesan 1
-                        $stickerMessageBuilder = new StickerMessageBuilder(1, 2); // pesan sticker
-
-                        $multiMessageBuilder = new MultiMessageBuilder();
-                        $multiMessageBuilder->add($textMessageBuilder1);
-                        $multiMessageBuilder->add($stickerMessageBuilder);
-                        $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
-                    }
-                    else if($event['message']['text'] == 'yansFitur5'){
-                        // Fitur 5
-                        $textMessageBuilder1 = new TextMessageBuilder('Tungguin yaa masih proses :p #fitur5'); // pesan 1
-                        $stickerMessageBuilder = new StickerMessageBuilder(1, 2); // pesan sticker
-
-                        $multiMessageBuilder = new MultiMessageBuilder();
-                        $multiMessageBuilder->add($textMessageBuilder1);
-                        $multiMessageBuilder->add($stickerMessageBuilder);
-                        $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
+                        $katamd5 = $event['message']['text'];
+                        $pisahmd5 = substr($katamd5, strpos($katamd5, "_") + 1);
+                        $fixmd5 = md5($pisahmd5);
+                        $result = $bot->replyText($event['replyToken'], $fixmd5);
                     }
                     else if (strtolower($event['message']['text']) == 'user id') {
                         // Fitur Untuk Mendapatkan userId
-                        // $result = $bot->replyText($event['replyToken'], $event['source']['userId']);
-                        $result = $bot->replyText($event['replyToken'], $event['source']['displayName']);
+                        $result = $bot->replyText($event['replyToken'], $event['source']['userId']);
  
                     } 
                     else if (strtolower($event['message']['text']) == 'flex message') {
@@ -163,7 +119,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                     $event['message']['type'] == 'audio' or
                     $event['message']['type'] == 'file'
                 ) {
-                    $contentURL = " https://hayyans-fans.herokuapp.com/public/content/" . $event['message']['id'];
+                    $contentURL = " https://cystas-bot.herokuapp.com/public/content/" . $event['message']['id'];
                     $contentType = ucfirst($event['message']['type']);
                     $result = $bot->replyText($event['replyToken'],
                         $contentType . " yang Anda kirim bisa diakses dari link:\n " . $contentURL);
