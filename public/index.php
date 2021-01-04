@@ -67,7 +67,8 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         $katamd5 = $event['message']['text'];
                         $pisahmd5 = substr($katamd5, strpos($katamd5, "_") + 1);
                         $fixmd5 = md5($pisahmd5);
-                        $result = $bot->replyText($event['replyToken'], $fixmd5);
+                        $textMessageBuilder = new TextMessageBuilder($fixmd5);
+                        $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
                     }
                     else if (strtolower($event['message']['text']) == 'user id') {
                         // Fitur Untuk Mendapatkan userId
