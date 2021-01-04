@@ -7,7 +7,7 @@
     "aspectMode": "cover",
     "action": {
       "type": "uri",
-      "uri": "http://linecorp.com/"
+      "uri": "http://whoishayyan.my.id/"
     },
     "aspectRatio": "20:13"
   },
@@ -21,7 +21,8 @@
         "weight": "bold",
         "size": "md",
         "align": "center",
-        "color": "#484848"
+        "color": "#484848",
+        "margin": "none"
       },
       {
         "type": "box",
@@ -42,10 +43,11 @@
             "contents": [
               {
                 "type": "text",
-                "text": "Nama",
+                "text": "Namaku",
                 "color": "#aaaaaa",
                 "size": "sm",
-                "flex": 1
+                "flex": 1,
+                "margin": "sm"
               },
               {
                 "type": "text",
@@ -53,7 +55,8 @@
                 "wrap": true,
                 "color": "#666666",
                 "size": "sm",
-                "flex": 3
+                "flex": 2,
+                "margin": "none"
               }
             ]
           },
@@ -64,10 +67,11 @@
             "contents": [
               {
                 "type": "text",
-                "text": "Prodi",
+                "text": "Prodiku",
                 "color": "#aaaaaa",
                 "size": "sm",
-                "flex": 1
+                "flex": 1,
+                "margin": "sm"
               },
               {
                 "type": "text",
@@ -75,7 +79,7 @@
                 "wrap": true,
                 "color": "#666666",
                 "size": "sm",
-                "flex": 3
+                "flex": 2
               }
             ]
           },
@@ -85,15 +89,16 @@
             "contents": [
               {
                 "type": "text",
-                "text": "Kerjaan",
+                "text": "Kerjaanku",
                 "flex": 1,
                 "size": "sm",
-                "color": "#aaaaaa"
+                "color": "#aaaaaa",
+                "margin": "sm"
               },
               {
                 "type": "text",
                 "text": "Membuat Bot Cystas",
-                "flex": 3,
+                "flex": 2,
                 "size": "sm",
                 "color": "#666666"
               }
@@ -106,15 +111,16 @@
             "contents": [
               {
                 "type": "text",
-                "text": "Pesan",
+                "text": "Pesanku",
                 "color": "#aaaaaa",
                 "size": "sm",
-                "flex": 1
+                "flex": 1,
+                "margin": "sm"
               },
               {
                 "type": "text",
                 "text": "Terimakasih telah menggunakan Bot Cystas. Untuk mengenal saya lebih jauh, dapat mengakses website dibawah ini.",
-                "flex": 3,
+                "flex": 2,
                 "size": "sm",
                 "color": "#666666",
                 "wrap": true,
@@ -141,7 +147,8 @@
           "label": "Website",
           "uri": "http://whoishayyan.my.id/"
         },
-        "color": "#808080"
+        "color": "#808080",
+        "margin": "none"
       },
       {
         "type": "spacer",
