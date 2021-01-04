@@ -67,7 +67,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         $katamd5 = $event['message']['text'];
                         $pisahmd5 = substr($katamd5, strpos($katamd5, "_") + 1);
                         $fixmd5 = md5($pisahmd5);
-                        $textMessageBuilder1 = new TextMessageBuilder($katamd5 . ' (String) : ' . $fixmd5 . ' (md5)'); // pesan hasil
+                        $textMessageBuilder1 = new TextMessageBuilder($pisahmd5 . ' (String) : ' . $fixmd5 . ' (md5)'); // pesan hasil
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
@@ -77,7 +77,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         $katasha1 = $event['message']['text'];
                         $pisahsha1 = substr($katasha1, strpos($katasha1, "_") + 1);
                         $fixsha1 = sha1($pisahsha1);
-                        $textMessageBuilder1 = new TextMessageBuilder($katasha1 . ' (String) : ' . $fixsha1 . ' (sha1)'); // pesan hasil
+                        $textMessageBuilder1 = new TextMessageBuilder($pisahsha1 . ' (String) : ' . $fixsha1 . ' (sha1)'); // pesan hasil
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
@@ -87,7 +87,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         $kataripemd128 = $event['message']['text'];
                         $pisahripemd128 = substr($kataripemd128, strpos($kataripemd128, "_") + 1);
                         $fixripemd128 = hash('ripemd128', $pisahripemd128);
-                        $textMessageBuilder1 = new TextMessageBuilder($kataripemd128 . ' (String) : ' . $fixripemd128 . ' (ripedm128)'); // pesan hasil
+                        $textMessageBuilder1 = new TextMessageBuilder($pisahripemd128 . ' (String) : ' . $fixripemd128 . ' (ripedm128)'); // pesan hasil
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
@@ -97,7 +97,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         $katagost = $event['message']['text'];
                         $pisahgost = substr($katagost, strpos($katagost, "_") + 1);
                         $fixgost = hash('gost', $pisahgost);
-                        $textMessageBuilder1 = new TextMessageBuilder($katagost . ' (String) : ' . $fixgost . ' (gost)'); // pesan hasil
+                        $textMessageBuilder1 = new TextMessageBuilder($pisahgost . ' (String) : ' . $fixgost . ' (gost)'); // pesan hasil
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
@@ -107,7 +107,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                         $katafnv132 = $event['message']['text'];
                         $pisahfnv132 = substr($katafnv132, strpos($katafnv132, "_") + 1);
                         $fixfnv132 = hash('fnv132', $pisahfnv132);
-                        $textMessageBuilder1 = new TextMessageBuilder($katafnv132 . ' (String) : ' . $fixfnv132 . ' (fnv132)'); // pesan hasil
+                        $textMessageBuilder1 = new TextMessageBuilder($pisahfnv132 . ' (String) : ' . $fixfnv132 . ' (fnv132)'); // pesan hasil
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
