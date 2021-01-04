@@ -114,7 +114,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                     }  
                     else if(strtolower($event['message']['text']) == '!perintah'){
                         // Penjelasan Perintah
-                        $textMessageBuilder1 = new TextMessageBuilder("Berikut ini adalah perintah beserta fungsi nya yang dapat digunakan pada Cystas Bot : " . PHP_EOL . PHP_EOL . "!info : Menampilkan Info Bot" . PHP_EOL . "!perintah : Menampilkan Perintah" . PHP_EOL . "!md5_Teks : Fitur Enkripsi MD5" . PHP_EOL . "!sha1_Teks : Fitur Enkripsi SHA1" . PHP_EOL . "!ripemd128_Teks : Fitur Enkripsi RIPEMD128" . PHP_EOL . "!gost_Teks : Fitur Enkripsi GOST" . PHP_EOL . "!fnv132_Teks : Fitur Enkripsi FNV132" . PHP_EOL . "!contoh : Menampilkan Contoh Detail" . PHP_EOL . "!card : Love From Cystas Bot" . PHP_EOL . PHP_EOL . "Semoga kamu terbantu ya dengan adanya Bot ini"); // pesan 1
+                        $textMessageBuilder1 = new TextMessageBuilder("Berikut ini adalah perintah beserta fungsinya yang dapat aku mengerti : " . PHP_EOL . PHP_EOL . "!info : Menampilkan Info Bot" . PHP_EOL . "!perintah : Menampilkan Perintah" . PHP_EOL . "!md5_Teks : Fitur Enkripsi MD5" . PHP_EOL . "!sha1_Teks : Fitur Enkripsi SHA1" . PHP_EOL . "!ripemd128_Teks : Fitur Enkripsi RIPEMD128" . PHP_EOL . "!gost_Teks : Fitur Enkripsi GOST" . PHP_EOL . "!fnv132_Teks : Fitur Enkripsi FNV132" . PHP_EOL . "!contoh : Menampilkan Contoh Detail" . PHP_EOL . "!card : Love From Cystas Bot" . PHP_EOL . PHP_EOL . "Semoga kamu terbantu ya dengan adanya Bot ini"); // pesan 1
                         $stickerMessageBuilder = new StickerMessageBuilder(1, 106); // pesan sticker
 
                         $multiMessageBuilder = new MultiMessageBuilder();
@@ -147,13 +147,11 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                     }
                     else{
                         // Fitur yang Tidak Ada
-                        $textMessageBuilder1 = new TextMessageBuilder('Kamu mengirim perintah : '.$event['message']['text']); // pesan 1
-                        $textMessageBuilder2 = new TextMessageBuilder('Sayang banget perintah itu gaada...'); // pesan 2
-                        $stickerMessageBuilder = new StickerMessageBuilder(1, 107); // pesan sticker
+                        $textMessageBuilder1 = new TextMessageBuilder("Aduh maaf aku belum bisa mengerti perintah yang kamu kirimkan" . "'" . $event['message']['text'] . "'." . " Tapi kamu bisa mengetik '!perintah' untuk melihat perintah yang aku mengerti."); // pesan 1
+                        $stickerMessageBuilder = new StickerMessageBuilder(1, 10); // pesan sticker
     
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($textMessageBuilder1);
-                        $multiMessageBuilder->add($textMessageBuilder2);
                         $multiMessageBuilder->add($stickerMessageBuilder);
                         $result = $bot->replyMessage($event['replyToken'], $multiMessageBuilder);
 
