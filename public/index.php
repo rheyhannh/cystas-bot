@@ -131,7 +131,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
                     else if(strtolower($event['message']['text']) == '!info'){
                         // Info Bot
                         $stickerMessageBuilder = new StickerMessageBuilder(2, 34); // pesan sticker
-                        $textMessageBuilder1 = new TextMessageBuilder("Halo ! Perkenalkan, aku Cystas. Aku adalah Bot yang berfungsi untuk melakukan Enkripsi pada suatu Teks. Enkripsi yang aku lakukan adalah dengan Hashing. Ada beberapa teknik Hashing yang aku gunakan antara lain MD5, SHA1, GOST dan lainnya." . PHP_EOL . PHP_EOL . "Kamu dapat langsung menggunakan fitur yang aku sediakan pada '!perintah'. Semoga aku dapat membantu kamu hihihi."); // pesan 1
+                        $textMessageBuilder1 = new TextMessageBuilder("Halo ! Perkenalkan, aku Cystas. Aku adalah Bot yang berfungsi untuk melakukan Enkripsi pada suatu Teks. Enkripsi yang aku lakukan adalah dengan Hashing. Ada beberapa teknik Hashing yang aku gunakan antara lain MD5, SHA1, GOST dan lainnya." . PHP_EOL . PHP_EOL . "Kamu dapat langsung menggunakan fitur yang aku sediakan dengan mengetik '!perintah' untuk melihat fitur yang aku sediakan. Semoga aku dapat membantu kamu hihihi."); // pesan 1
                         $multiMessageBuilder = new MultiMessageBuilder();
                         $multiMessageBuilder->add($stickerMessageBuilder);
                         $multiMessageBuilder->add($textMessageBuilder1);
