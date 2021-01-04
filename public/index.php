@@ -39,7 +39,7 @@ $app->post('/webhook', function (Request $request, Response $response) use ($cha
     // get request body dan line signature header
     $body = $request->getBody();
     $signature = $request->getHeaderLine('HTTP_X_LINE_SIGNATURE');
-  md5()
+
     // log body and signature
     file_put_contents('php://stderr', 'Body: ' . $body);
   
